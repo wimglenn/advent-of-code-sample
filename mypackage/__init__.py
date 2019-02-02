@@ -44,6 +44,6 @@ provides correct answers for each of the puzzle test cases!)
 """
 
 def mysolve(year, day, data):
-    a = "myanswerA"
-    b = "myanswerB"
+    a = 1234
+    b = 5678
     return a, b

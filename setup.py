@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="advent-of-code-myusername",
+    name="advent-of-code-sample",
     version="0.1",
     description="myusername's solutions for https://adventofcode.com/",
-    url="https://github.com/myusername/advent-of-code",
+    url="https://github.com/myusername/advent-of-code-myusername",
     author="My Username",
     author_email="myusername@example.com",
     long_description=open("README.md").read(),
