@@ -47,7 +47,7 @@ $ aoc --years 2015 --days 3 4 11    # run it!
 How to hook into your code:
 ---------------------------
 
-The `aoc` runner uses setuptools' [dynamic discovery of services and plugins](https://setuptools.readthedocs.io/en/latest/setuptools.html#dynamic-discovery-of-services-and-plugins) feature to locate and run your code.
+The `aoc` runner uses setuptools' [dynamic discovery of services and plugins](https://setuptools.readthedocs.io/en/latest/setuptools.html#dynamic-discovery-of-services-and-plugins) features, *entry points*, to locate and run your code.
 Define your plugin's entry point in `setup.py`. The group name to use is "adventofcode.user":
 
 ```python
