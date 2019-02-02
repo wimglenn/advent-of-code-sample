@@ -1,7 +1,7 @@
 advent-of-code-sample:
 ----------------------
 
-Provides a working example plugin structure for using the `aoc` runner script provided by [advent-of-code-data](https://github.com/wimglenn/advent-of-code-data).
+This repository provides a working example plugin structure for using the `aoc` runner script provided by [advent-of-code-data](https://github.com/wimglenn/advent-of-code-data). You could fork this repo and edit it, or just write your own plugin manually.
 
 The `aoc` runner allows you to easily verify your [Advent of Code](https://adventofcode.com/) solutions against multiple datasets, or verify other user's code against your own dataset.
 
@@ -47,8 +47,9 @@ $ aoc --years 2015 --days 3 4 11    # run it!
 How to hook into your code:
 ---------------------------
 
-The `aoc` runner uses setuptools' [dynamic discovery of services and plugins](https://setuptools.readthedocs.io/en/latest/setuptools.html#dynamic-discovery-of-services-and-plugins) features, *entry points*, to locate and run your code.
-Define your plugin's entry point in `setup.py`. The group name to use is "adventofcode.user":
+The `aoc` runner uses setuptools' [dynamic discovery of services and plugins](https://setuptools.readthedocs.io/en/latest/setuptools.html#dynamic-discovery-of-services-and-plugins) features, *entry points*, to locate and run your code. See [https://entrypoints.readthedocs.io/](https://entrypoints.readthedocs.io/) for more info about creating/finding plugins using entry points in Python.
+
+In your package, define your plugin's entry point in your `setup.py`, `setup.cfg`, or `pyproject.toml`. The group name to use is "adventofcode.user", for example:
 
 ```python
 # setup.py
@@ -69,6 +70,4 @@ def mysolve(year, day, data):
     return part_a_answer, part_b_answer
 ```
 
-Inside the entry-point you can do whatever you need in order to delegate to your code. For example, write out data to a scratch file then run a script, or import a function and just pass in the data directly as an argument.
-The only requirement is that this entry-point should return a tuple of two values, with the answers for that day's puzzle, the rest is up to you.
-You could fork this repo and edit it, or just write your own plugin manually.
+Inside the entry-point you can do whatever you need in order to delegate to your code. For example, write out data to a scratch file then run a script, or import a function and just pass in the data directly as an argument. The only requirement is that this entry-point should return a tuple of two values, with the answers for that day's puzzle - the rest is up to you.
