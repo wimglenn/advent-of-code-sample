@@ -70,4 +70,4 @@ def mysolve(year, day, data):
     return part_a_answer, part_b_answer
 ```
 
-Inside the entry point you can do whatever you need in order to delegate to your code. For example, write out data to a scratch file then run a script, or import a function and just pass in the data directly as an argument. The only requirement is that this entry-point should return a tuple of two values, with the answers for that day's puzzle - the rest is up to you.
+Inside the entry point you can do whatever you need in order to delegate to your code. For example, write out data to a scratch file then run a script, or import a function and just pass in the data directly as an argument. The only requirement is that this entry point should return a tuple of two values, with the answers for that day's puzzle - the rest is up to you.
