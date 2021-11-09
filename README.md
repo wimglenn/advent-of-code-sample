@@ -47,7 +47,7 @@ $ aoc --years 2015 --days 3 4 11    # run it!
 How to hook into your code:
 ---------------------------
 
-The `aoc` runner uses a Python packaging feature, [*entry points*](https://packaging.python.org/specifications/entry-points/) features, to locate and run your code. See [https://entrypoints.readthedocs.io/](https://entrypoints.readthedocs.io/) for more info about creating/finding plugins using entry points.
+The `aoc` runner uses a Python packaging 'plugin' feature called [*entry points*](https://packaging.python.org/specifications/entry-points/) to locate and run your code. See [https://entrypoints.readthedocs.io/](https://entrypoints.readthedocs.io/) for more info about advertising an entry point from your code.
 
 In your package, define your plugin's entry point in your `setup.py`, `setup.cfg`, or `pyproject.toml`. The group name to use is "adventofcode.user", for example:
 
@@ -70,4 +70,4 @@ def mysolve(year, day, data):
     return part_a_answer, part_b_answer
 ```
 
-Inside the entry-point you can do whatever you need in order to delegate to your code. For example, write out data to a scratch file then run a script, or import a function and just pass in the data directly as an argument. The only requirement is that this entry-point should return a tuple of two values, with the answers for that day's puzzle - the rest is up to you.
+Inside the entry point you can do whatever you need in order to delegate to your code. For example, write out data to a scratch file then run a script, or import a function and just pass in the data directly as an argument. The only requirement is that this entry-point should return a tuple of two values, with the answers for that day's puzzle - the rest is up to you.
