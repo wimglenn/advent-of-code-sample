@@ -1,5 +1,5 @@
-advent-of-code-sample:
-----------------------
+advent-of-code-sample
+---------------------
 
 This repository provides a working example plugin structure for using the `aoc` runner script provided by [advent-of-code-data](https://github.com/wimglenn/advent-of-code-data).
 You could fork this repo and edit it, or just write your own plugin manually.
@@ -57,8 +57,8 @@ The group name to use is "adventofcode.user".
 Example for `pyproject.toml`
 
 ```toml
-[options.entry_points]
-"adventofcode.user" = "myusername = mypackage:mysolve"
+[project.entry-points."adventofcode.user"]
+myusername = "mypackage:mysolve"
 ```
 
 Example for older `setup.py` based packaging:
