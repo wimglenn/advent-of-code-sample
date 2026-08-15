@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "advent-of-code-sample"
+version = "0.2"
+description = "myusername's solutions for https://adventofcode.com/"
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Games/Entertainment :: Puzzle Games",
+]
+
+[[project.authors]]
+name = "My Username"
+email = "myusername@example.com"
+
+[project.urls]
+homepage = "https://github.com/myusername/advent-of-code-myusername"
+
+[project.entry-points."adventofcode.user"]
+myusername = "mypackage:mysolve"

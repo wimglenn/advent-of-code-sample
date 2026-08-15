@@ -1,7 +1,8 @@
 advent-of-code-sample:
 ----------------------
 
-This repository provides a working example plugin structure for using the `aoc` runner script provided by [advent-of-code-data](https://github.com/wimglenn/advent-of-code-data). You could fork this repo and edit it, or just write your own plugin manually.
+This repository provides a working example plugin structure for using the `aoc` runner script provided by [advent-of-code-data](https://github.com/wimglenn/advent-of-code-data).
+You could fork this repo and edit it, or just write your own plugin manually.
 
 The `aoc` runner allows you to easily verify your [Advent of Code](https://adventofcode.com/) solutions against multiple datasets, or verify other user's code against your own dataset.
 
@@ -13,7 +14,7 @@ $ cat ~/.config/aocd/tokens.json  # create this file with some auth tokens
     "reddit": "53616c7465645f5ff7c8...",
     "twitter": "53616c7465645f5fa524..."
 }
-$ pip install ~/src/advent-of-code-sample  # install the directory which contains your setup.py file
+$ pip install ~/src/advent-of-code-sample  # install the directory which contains your advent-of-code solutions
 ...
 $ pip install -q advent-of-code-wim  # can also install some other user's code if you want..?
 ...
@@ -47,9 +48,20 @@ $ aoc --years 2015 --days 3 4 11    # run it!
 How to hook into your code:
 ---------------------------
 
-The `aoc` runner uses a Python packaging 'plugin' feature called [*entry points*](https://packaging.python.org/specifications/entry-points/) to locate and run your code. See [https://entrypoints.readthedocs.io/](https://entrypoints.readthedocs.io/) for more info about advertising an entry point from your code.
+The `aoc` runner uses a Python packaging 'plugin' feature called [*entry points*](https://packaging.python.org/specifications/entry-points/) to locate and run your code.
+See [https://entrypoints.readthedocs.io/](https://entrypoints.readthedocs.io/) for more info about advertising an entry point from your code.
 
-In your package, define your plugin's entry point in your `setup.py`, `setup.cfg`, or `pyproject.toml`. The group name to use is "adventofcode.user", for example:
+In your package, define your plugin's entry point in your Python package.
+The group name to use is "adventofcode.user".
+
+Example for `pyproject.toml`
+
+```toml
+[options.entry_points]
+"adventofcode.user" = "myusername = mypackage:mysolve"
+```
+
+Example for older `setup.py` based packaging:
 
 ```python
 # setup.py
@@ -62,7 +74,7 @@ setup(
 ```
 
 Change `mypackage` to whatever package or module name is used to import your stuff.
-The name `mysolve` should resolve to a callable in your package's namespace which accepts three named arguments `year`, `day`, `data` (any order ok) and returns two values, e.g.:
+The name `mysolve` should resolve to a callable in your package's namespace which accepts three named arguments `year`, `day`, `data` (any order ok) and returns two values:
 
 ```python
 def mysolve(year, day, data):
@@ -70,4 +82,6 @@ def mysolve(year, day, data):
     return part_a_answer, part_b_answer
 ```
 
-Inside the entry point you can do whatever you need in order to delegate to your code. For example, write out data to a scratch file then run a script, or import a function and just pass in the data directly as an argument. The only requirement is that this entry point should return a tuple of two values, with the answers for that day's puzzle - the rest is up to you.
+Inside the entry point you can do whatever you need in order to delegate to your code.
+For example, write out data to a scratch file then run a script, or import a function and just pass in the data directly as an argument.
+The only requirement is that this entry point should return a tuple of two values, with the answers for that day's puzzle - the rest is up to you.
